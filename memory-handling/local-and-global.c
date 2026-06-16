@@ -17,7 +17,7 @@ int main() {
 
     // Динамически создаваемая переменная будет располагаться в куче.
     int *dynamic_variable = malloc(sizeof(*dynamic_variable));
-    printf("Динамически создаваемая переменная хранится по адресу: %p\n", &dynamic_variable);
+    printf("Динамически создаваемая переменная хранится по адресу: %p\n", dynamic_variable);
     free(dynamic_variable);
 
     return 0;
