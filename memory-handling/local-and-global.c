@@ -21,12 +21,15 @@ int main() {
     printf("Динамически создаваемая переменная хранится по адресу: %p\n", dynamic_variable);
     free(dynamic_variable);
 
+    // На разных платформах по-разному устроен memory layout.
 #ifdef __linux__
     assert(&local_variable > dynamic_variable);
     assert(dynamic_variable > &global_uninitialized_variable);
     assert(&global_uninitialized_variable > &global_initialized_variable);
 #elif _WIN64
-    // TODO: Добавить соответствующие ассерты для винды.
+    assert(&global_uninitialized_variable > &global_initialized_variable);
+    assert(&global_initialized_variable > dynamic_variable);
+    assert(dynamic_variable > &local_variable);
 #endif
 
     return 0;
