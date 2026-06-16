@@ -4,5 +4,6 @@
 int main(int argc, char *argv[]) {
     // В таком виде эта программа всегда будет выводить одно и то же число.
     int random_number = rand();
+    // TODO: В Windows (CLion) выводятся иероглифы вместо кириллицы.
     printf("Случайное число БЕЗ инициализации: %d\n", random_number);
 }
