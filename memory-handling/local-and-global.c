@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 
 int global_initialized_variable = 1;
 int global_uninitialized_variable;
@@ -19,6 +20,14 @@ int main() {
     int *dynamic_variable = malloc(sizeof(*dynamic_variable));
     printf("Динамически создаваемая переменная хранится по адресу: %p\n", dynamic_variable);
     free(dynamic_variable);
+
+#ifdef __linux__
+    assert(&local_variable > dynamic_variable);
+    assert(dynamic_variable > &global_uninitialized_variable);
+    assert(&global_uninitialized_variable > &global_initialized_variable);
+#elif _WIN64
+    // TODO: Добавить соответствующие ассерты для винды.
+#endif
 
     return 0;
 }
