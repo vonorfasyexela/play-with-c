@@ -19,6 +19,8 @@ int main() {
     size_t size_of_first_element = sizeof(a[0]);
 
     printf("= In the same function =\n");
+    // Здесь нужно использовать именно спецификатор zu.
+    // Если прописать llu, то на Raspberry Pi это работает неправильно.
     printf("\tSize of the array: %zu bytes\n", size_of_array);
     printf("\tSize of the first element: %zu bytes\n", size_of_first_element);
     printf("\tCalculated number of elements: %zu / %zu = %zu\n", size_of_array, size_of_first_element, size_of_array / size_of_first_element);
